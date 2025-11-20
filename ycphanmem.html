@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLDT</title>
+    <link rel="stylesheet" href="ycphanmem.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="app-name">
+                <img src="pka.png" alt="">
+                <h3>Hệ thống quản lý đào tạo</h3>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-link" onclick="showinfo('dashboard')">Trang chủ</div>
+                <div class="nav-link" onclick="toggleDropDown('qltochuc-dropdown')">
+                    <h4>Quản lý cơ cấu tổ chức</h4>
+                </div>
+                <div class="drop-items" id="tochuc-items">
+                    <a href="#" onclick="showinfo('sodo')">Sơ đồ tổ chức</a>
+                    <a href="#" onclick="showinfo('phongban')">Thông tin phòng ban</a>
+                    <a href="#" onclick="showinfo('khoa')">Thông tin khoa</a>
+                </div>
+                <div class="nav-link" onclick="toggleDropDown('quanlynhansu-dropdown')">
+                    <h4>Quản lý nhân sự</h4>
+                </div>
+                <div class="drop-items" id="nhansu-items" style="display:none;">
+                    <a href="#" onclick="showinfo('qlnhansu')">Quản lý nhân viên</a>
+                    <a href="#" onclick="showinfo('qlgiangvien')">Quản lý giảng viên</a>
+                </div>
+                <div class="nav-link" onclick="toggleDropDown('xaydungctdt-dropdown')">
+                    <h4>Cấu trúc đào tạo</h4>
+                </div>
+                <div class="drop-items" id="ctdt-items" style="display:none;">
+                    <a href="#" onclick="showinfo('qlctdt')">Quản lý chương trình đào tạo</a>
+                    <a href="#" onclick="showinfo('qlkkt')">Quản lý khối kiến thức</a>
+                    <a href="#" onclick="showinfo('qlnganhhoc')">Quản lý ngành học</a>
+                    <a href="#" onclick="showinfo('qlkhoahoc')">Quản lý khóa học</a>
+                    <a href="#" onclick="showinfo('qlhocphan')">Quản lý học phần </a>
+                </div>
+                <div class="nav-link" onclick="showinfo('hocphi')">Quản lý học phí</div>
+            </div>  
+        </div>
+        <div class="main-content">
+            <div id="dashboard" class="section section-active">
+                <h2>Tổng quan</h2>
+                <div class="news" onclick="showinfo('tinchinh')">
+                    <div class="tin-chinh">
+                        <img src="hl1.png" alt="">
+                        <p>Lễ công bố quyết định: Chuyển Trường đại học Phenikaa thành Đại học Phenikaa</p>
+                    </div>
+                    <div class="tinphu">
+                        <div class="tin-phu1" onclick="showinfo('tinphu1')">
+                            <img src="tinphu1.jpg" alt="">
+                            <p>Thông báo tuyển sinh Chương trình Đào tạo Tiến sĩ và Thạc sĩ</p>
+                        </div>
+                        <div class="tin-phu2" onclick="showinfo('tinphu2')">
+                            <img src="tinphu2.jpg" alt="">
+                            <p>Kiện toàn bộ máy lãnh đạo, Đại học Phenikaa tăng tốc trên hành trình quốc tế hóa</p>
+                        </div>
+                        <div class="tin-phu3" onclick="showinfo('tinphu3')">
+                            <img src="tinphu3.jpg" alt="">
+                            <p>ĐH Phenikaa mở rộng hợp tác quốc tế trong nghiên cứu môi trường</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dash-menu">
+                    <div class="dash">
+                        <h4>Đội ngũ giảng dạy</h4>
+                        <p>Giảng viên giàu kinh nghiệm, tận tâm nhằm mang đến chất lượng đào tạo tốt nhất cho sinh viên </p>
+                    </div>
+                    <div class="dash">
+                        <h4>Chương trình đào tạo</h4>
+                        <p>Được cập nhật theo tiêu chuẩn quốc tế, cân bằng giúp sinh viên trang bị kiến thức, sẵn sàng cho thị trường lao động</p>
+                    </div>
+                    <div class="dash">
+                        <h4>CT liên kết quốc tế</h4>
+                        <p>Mang đến cơ hội học tập với các trường ĐH uy tín nước ngoài, tiếp cận tri thức toàn cầu và cơ hội nghề nghiệp quốc tế</p>
+                    </div>
+                </div>
+            </div>
+
+ 
+            <div id="sodo" class="section">
+                <h2>Sơ đồ tổ chức</h2>
+                <div class="university-header">
+                    <div class="university-node">
+                        <img src="pka.png" alt="">
+                        <h3>Đại học Phenikaa</h3>
+                    </div>
+                    <div class="connection-line"></div>
+                </div>
+
+                <div class="schools-row">
+                    <div class="school-item">
+                        <div class="school-card" onclick="toggleSchoolDropdown(this, 'engineering')">
+                            <h4>Trường Kỹ thuật</h4>
+                            <p>5 khoa chuyên môn</p>
+                            <div class="dropdown-arrow">▼</div>
+                        </div>
+                        <div class="school-dropdown" id="engineering-dropdown">
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'cnsh')">
+                                <h4>Công nghệ sinh học hóa học và kỹ thuật môi trường </h4>
+                                <div class="department-info" id="cnsh-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 18 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>bcee@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0246.2918.118</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://bcee.phenikaa-uni.edu.vn/" target="_blank">https://bcee.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'ddt')">
+                                <h4>Điện - Điện tử </h4>
+                                <div class="department-info" id="ddt-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 16 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>eee@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0246.2918.118</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="eee@phenikaa-uni.edu.vn" target="_blank">eee@phenikaa-uni.edu.vn</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'ckcdt')">
+                                <h4>Cơ khí - Cơ điện tử </h4>
+                                <div class="department-info" id="ckcdt-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 17 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>mem@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0246.2918.118</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://mem.phenikaa-uni.edu.vn/" target="_blank">https://mem.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'khktvl')">
+                                <h4>Khoa học kỹ thuật vật liệu </h4>
+                                <div class="department-info" id="khktvl-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 18 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>mse@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0246.2918.118</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://mse.phenikaa-uni.edu.vn/" target="_blank">https://mse.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'ktotvnl')">
+                                <h4>Khoa học kỹ thuật vật liệu </h4>
+                                <div class="department-info" id="ktotvnl-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 17 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>vee@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0246.2918.118</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://vee.phenikaa-uni.edu.vn/" target="_blank">https://vee.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="school-item">
+                        <div class="school-card" onclick="toggleSchoolDropdown(this, 'it')">
+                            <h4>Trường CNTT</h4>
+                            <p>3 ngành học</p>
+                            <div class="dropdown-arrow">▼</div>
+                        </div>
+                        <div class="school-dropdown" id="it-dropdown">
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'khmt')">
+                                <h4>Khoa học máy tính </h4>
+                                <div class="department-info" id="khmt-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 15 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>khmt@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0466.569.110</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://khmt.phenikaa-uni.edu.vn/" target="_blank">https://khmt.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'httt')">
+                                <h4>Hệ thống thông tin </h4>
+                                <div class="department-info" id="httt-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 15 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>httt@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0466.569.110</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://httt.phenikaa-uni.edu.vn/" target="_blank">https://httt.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'ttnt')">
+                                <h4>Trí tuệ nhân tạo </h4>
+                                <div class="department-info" id="ttnt-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 15 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>ttnt@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0466.569.110</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://ttnt.phenikaa-uni.edu.vn/" target="_blank">https://ttnt.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="department-item" onclick="toggleSchoolDepartmentInfo(this,'ktpm')">
+                                <h4>Kỹ thuật phần mềm </h4>
+                                <div class="department-info" id="ktpm-info">
+                                    <div class="info-row">
+                                        <span>Địa chỉ: </span>
+                                        <span>Tầng 15 - Nhà A9 - Đại học Phenikaa</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Email: </span>
+                                        <span>ktpm@phenikaa-uni.edu.vn</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Điện thoại: </span>
+                                        <span>0466.569.110</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Website: </span>
+                                        <a href="https://ktpm.phenikaa-uni.edu.vn/" target="_blank">https://ktpm.phenikaa-uni.edu.vn/</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="school-item">
+                        <div class="school-card" onclick="toggleSchoolDropdown(this, 'economics')">
+                            <h4>Trường Kinh tế</h4>
+                            <p>4 lĩnh vực</p>
+                            <div class="dropdown-arrow">▼</div>
+                        </div>
+                        <div class="school-dropdown" id="economics-dropdown">
+                            <div class="department-item">Quản trị kinh doanh</div>
+                            <div class="department-item">Kinh tế và kinh doanh quốc tế</div>
+                            <div class="department-item">Tài chính - kế toán</div>
+                            <div class="department-item">Du lịch - khách sạn</div>
+                        </div>
+                    </div>
+
+
+                    <div class="school-item">
+                        <div class="school-card" onclick="toggleSchoolDropdown(this, 'languages')">
+                            <h4>Trường NN-KHXH</h4>
+                            <p>6 ngôn ngữ & chuyên ngành</p>
+                            <div class="dropdown-arrow">▼</div>
+                        </div>
+                        <div class="school-dropdown" id="languages-dropdown">
+                            <div class="department-item">Ngôn ngữ Anh</div>
+                            <div class="department-item">Ngôn ngữ Nhật Bản</div>
+                            <div class="department-item">Ngôn ngữ Trung</div>
+                            <div class="department-item">Ngôn ngữ Hàn</div>
+                            <div class="department-item">Ngôn ngữ Pháp</div>
+                            <div class="department-item">Đông phương học</div>
+                        </div>
+                    </div>
+
+
+                    <div class="school-item">
+                        <div class="school-card" onclick="toggleSchoolDropdown(this, 'medical')">
+                            <h4>Trường Y-Dược</h4>
+                            <p>8 chuyên ngành y tế</p>
+                            <div class="dropdown-arrow">▼</div>
+                        </div>
+                        <div class="school-dropdown" id="medical-dropdown">
+                            <div class="department-item">Y</div>
+                            <div class="department-item">Y học cổ truyền</div>
+                            <div class="department-item">Điều dưỡng</div>
+                            <div class="department-item">Y tế công cộng</div>
+                            <div class="department-item">Răng hàm mặt</div>
+                            <div class="department-item">Dược</div>
+                            <div class="department-item">Kỹ thuật y học</div>
+                            <div class="department-item">Khoa học y sinh</div>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+
+
+            <div id="phongban" class="section">
+                <h2>Thông tin phòng ban</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm phòng ban">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themphongban">Thêm phòng ban</button>
+                <table class="tbphongban">
+                    <thead>
+                        <tr>
+                            <th>Mã phòng ban</th>
+                            <th>Tên phòng ban</th>
+                            <th>Địa chỉ</th>
+                            <th>Email phòng</th>
+                            <th>Trưởng phòng</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>            
+            </div>
+            <div id="khoa" class="section">
+                <h2>Thông tin khoa</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm khoa">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themKhoa">Thêm khoa</button>
+                <table class="tbkhoa">
+                    <thead>
+                        <tr>
+                            <th>Mã khoa</th>
+                            <th>Tên khoa</th>
+                            <th>Địa chỉ</th>
+                            <th>Email khoa</th>
+                            <th>Trưởng khoa</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>            
+            </div>
+
+            <div id="qlnhansu" class="section">
+                <h2>Quản lý nhân sự</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm nhân viên">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themnhansu">Thêm nhân sự</button>
+                <table class="tbnhansu">
+                    <thead>
+                        <tr>
+                            <th>Mã nhân viên</th>
+                            <th>Họ và tên</th>
+                            <th>Chức vụ</th>
+                            <th>Email</th>
+                            <th>Phòng trực thuộc</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="qlgiangvien" class="section">
+                <h2>Quản lý giảng viên</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm giảng viên">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themgiangvien">Thêm giảng viên</button>
+                <table class="tbgiangvien">
+                    <thead>
+                        <tr>
+                            <th>Mã giảng viên</th>
+                            <th>Họ và tên</th>
+                            <th>Chức vụ</th>
+                            <th>Email</th>
+                            <th>Khoa</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="qlctdt" class="section">
+                <h2>Quản lý chương trình đào tạo</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm CTĐT">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themctdt">Thêm chương trình đào tạo mới</button>
+                
+            </div>
+
+            <div id="qlkkt" class="section">
+                <h2>Quản lý khối kiến thức</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm KKT">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themkkt">Thêm khối kiến thức</button>
+                <table class="tbkkt">
+                    <thead>
+                        <tr>
+                            <th>Mã khối kiến thức</th>
+                            <th>Tên khối kiến thức</th>
+                            <th>Tín chỉ</th>
+                            <th>Loại</th>
+                            <th>Mô tả</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div id="qlnganhhoc" class="section">
+                <h2>Quản lý ngành học</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm ngành học">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themnganhhoc">Thêm ngành học</button>
+                <table class="tbnganhhoc">
+                    <thead>
+                        <tr>
+                            <th>Mã ngành học</th>
+                            <th>Tên ngành học</th>
+                            <th>Khoa</th>
+                            <th>Số tín chỉ</th>
+                            <th>Mô tả</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="qlkhoahoc" class="section">
+                <h2>Quản lý khóa học</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm khóa học">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themkhoahoc">Thêm khóa học</button>
+                <table class="tbkhoahoc">
+                    <thead>
+                        <tr>
+                            <th>Mã khóa học</th>
+                            <th>Tên khóa học</th>
+                            <th>Năm</th>
+                            <th>CTĐT</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div id ="qlhocphan" class="section">
+                <h2>Quản lý học phần</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm học phần">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themhocphan">Thêm học phần</button>
+                <table class="tbhocphan">
+                    <thead>
+                        <tr>
+                            <th>Mã học phần</th>
+                            <th>Tên học phần</th>
+                            <th>Số tín chỉ</th>
+                            <th>Số t/c lý thuyết</th>
+                            <th>Số t/c thực hành</th>
+                            <th>HP tiên quyết</th>  
+                            <th>HP song hành</th>
+                            <th>HP học trước</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div id="hocphi" class="section">
+                <h2>Quản lý học phí</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="themhocphi">Tính học phí</button>
+            </div>
+            
+        </div>
+    </div>
+    <script src="ycphanmem.js"></script>
+</body>
+</html>
